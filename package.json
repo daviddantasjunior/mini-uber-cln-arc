@@ -1,0 +1,23 @@
+{
+  "name": "mini-uber-cln-arc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "tsx watch src/sum.ts",
+    "start": "node dist/sum.js",
+    "build": "tsup src --out-dir dist",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "20.5.4",
+    "tsup": "7.2.0",
+    "tsx": "3.12.7",
+    "typescript": "5.1.6",
+    "vitest": "0.34.2"
+  }
+}
