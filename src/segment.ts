@@ -7,21 +7,21 @@ export default class Segment {
     if (!this.isValidDate()) throw new Error('Invalid date')
   }
 
-  private isOvernight() {
+  isOvernight() {
     return this.date.getHours() >= 22 || this.date.getHours() <= 6
   }
 
-  private isSunday() {
+  isSunday() {
     return this.date.getDay() === 0
   }
 
-  private isValidDistance() {
+  isValidDistance() {
     return (
       this.distance && typeof this.distance === 'number' && this.distance > 0
     )
   }
 
-  private isValidDate() {
+  isValidDate() {
     return (
       this.date &&
       this.date instanceof Date &&
