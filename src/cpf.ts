@@ -1,51 +1,43 @@
-export function validate(str: string) {
-  if (str !== null) {
-    if (str !== undefined) {
-      if (str.length >= 11 || str.length <= 14) {
-        str = str
-          .replace('.', '')
-          .replace('.', '')
-          .replace('-', '')
-          .replace(' ', '')
+export default class Cpf {
+  value: string
 
-        if (!str.split('').every((c) => c === str[0])) {
-          try {
-            let d1, d2
-            let dg1, dg2, rest
-            let digito
-            d1 = d2 = 0
-            dg1 = dg2 = rest = 0
+  constructor(value: string) {
+    if (!this.validate(value)) throw new Error('Invalid cpf')
+    this.value = value
+  }
 
-            for (let nCount = 1; nCount < str.length - 1; nCount++) {
-              // if (isNaN(parseInt(str.substring(nCount -1, nCount)))) {
-              // 	return false;
-              // } else {
+  private validate(cpf: string) {
+    cpf = this.clean(cpf)
+    if (this.isValidLength(cpf)) return false
+    if (this.hasAllDigitsEqual(cpf)) return false
+    const dg1 = this.calculateDigit(cpf, 10)
+    const dg2 = this.calculateDigit(cpf, 11)
+    return this.extractCheckDigit(cpf) === `${dg1}${dg2}`
+  }
 
-              digito = parseInt(str.substring(nCount - 1, nCount))
-              d1 = d1 + (11 - nCount) * digito
+  private clean(cpf: string) {
+    return cpf.replace(/\D/g, '')
+  }
 
-              d2 = d2 + (12 - nCount) * digito
-              // }
-            }
+  private isValidLength(cpf: string) {
+    return cpf.length !== 11
+  }
 
-            rest = d1 % 11
+  private hasAllDigitsEqual(cpf: string) {
+    const [firstDigit] = cpf
+    return [...cpf].every((digit) => digit === firstDigit)
+  }
 
-            dg1 = rest < 2 ? (dg1 = 0) : 11 - rest
-            d2 += 2 * dg1
-            rest = d2 % 11
-            if (rest < 2) dg2 = 0
-            else dg2 = 11 - rest
-
-            const nDigVerific = str.substring(str.length - 2, str.length)
-            const nDigResult = '' + dg1 + '' + dg2
-            return nDigVerific === nDigResult
-          } catch (e) {
-            console.error('Erro !' + e)
-
-            return false
-          }
-        } else return false
-      } else return false
+  private calculateDigit(cpf: string, factor: number) {
+    let total = 0
+    for (const digit of cpf) {
+      if (factor > 1) total += parseInt(digit) * factor--
     }
-  } else return false
+    const rest = total % 11
+    return rest < 2 ? 0 : 11 - rest
+  }
+
+  private extractCheckDigit(cpf: string) {
+    return cpf.slice(9)
+  }
 }
