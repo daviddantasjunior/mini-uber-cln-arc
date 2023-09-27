@@ -1,4 +1,4 @@
-import Passenger from '@/domain/passenger'
+import Passenger from 'src/domain/passenger'
 import PassengerRepository from '../repository/passengerRepository'
 
 type Input = {

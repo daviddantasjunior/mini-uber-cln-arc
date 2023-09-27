@@ -1,5 +1,4 @@
-drop table miniuber.passenger;
-drop schema miniuber;
+drop schema if exists miniuber;
 create schema miniuber;
 
 create table miniuber.passenger (

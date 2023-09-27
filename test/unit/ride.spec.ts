@@ -1,4 +1,4 @@
-import Ride from '@/domain/ride'
+import Ride from '../../src/domain/ride'
 import { expect, test } from 'vitest'
 
 test('Deve fazer o cálculo do preço de uma corrida durante o dia', function () {

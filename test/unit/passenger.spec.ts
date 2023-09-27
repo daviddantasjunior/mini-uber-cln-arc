@@ -1,4 +1,4 @@
-import Passenger from '@/domain/passenger'
+import Passenger from '../../src/domain/passenger'
 import { expect, test } from 'vitest'
 
 test('Deve criar um passageiro', function () {

@@ -1,6 +1,6 @@
-import CreatePassenger from '@/application/usecase/createPassenger'
-import GetPassenger from '@/application/usecase/getPassenger'
-import PassengerRepositoryDatabase from '@/infra/repository/passengerRepositoryDatabase'
+import CreatePassenger from '../../src/application/usecase/createPassenger'
+import GetPassenger from '../../src/application/usecase/getPassenger'
+import PassengerRepositoryDatabase from '../../src/infra/repository/passengerRepositoryDatabase'
 import { expect, test } from 'vitest'
 
 test('Deve cadastrar o passageiro', async function () {

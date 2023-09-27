@@ -1,4 +1,4 @@
-import Driver from '@/domain/driver'
+import Driver from '../../src/domain/driver'
 import { expect, test } from 'vitest'
 
 test('Deve criar um motorista', function () {

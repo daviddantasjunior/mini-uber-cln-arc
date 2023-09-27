@@ -1,4 +1,4 @@
-import Passenger from '@/domain/passenger'
+import Passenger from 'src/domain/passenger'
 
 export default interface PassengerRepository {
   save(passenger: Passenger): Promise<void>

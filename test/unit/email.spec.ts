@@ -1,4 +1,4 @@
-import Email from '@/domain/email'
+import Email from '../../src/domain/email'
 import { expect, test } from 'vitest'
 
 test('Deve validar o email', function () {

@@ -1,8 +1,8 @@
-import DriverRepository from '@/application/repository/driverRepository'
-import CreateDriver from '@/application/usecase/createDriver'
-import GetDriver from '@/application/usecase/getDriver'
-import Driver from '@/domain/driver'
-import DriverRepositoryDatabase from '@/infra/repository/driverRepositoryDatabase'
+import DriverRepository from '../../src/application/repository/driverRepository'
+import CreateDriver from '../../src/application/usecase/createDriver'
+import GetDriver from '../../src/application/usecase/getDriver'
+import Driver from '../../src/domain/driver'
+import DriverRepositoryDatabase from '../../src/infra/repository/driverRepositoryDatabase'
 import { expect, test } from 'vitest'
 
 test('Deve cadastrar o motorista', async function () {

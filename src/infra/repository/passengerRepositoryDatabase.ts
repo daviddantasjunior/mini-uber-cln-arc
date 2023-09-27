@@ -1,12 +1,12 @@
-import PassengerRepository from '@/application/repository/passengerRepository'
-import Passenger from '@/domain/passenger'
 import pgp from 'pg-promise'
+import PassengerRepository from 'src/application/repository/passengerRepository'
+import Passenger from 'src/domain/passenger'
 
 export default class PassengerRepositoryDatabase
   implements PassengerRepository
 {
   async save(passenger: Passenger) {
-    const connection = pgp()('postgres://postgres:123456@localhost:5432/app')
+    const connection = pgp()('postgres://postgres:postgres@localhost:5432/miniuber')
     await connection.query(
       'insert into miniuber.passenger (passenger_id, name, email, document) values ($1, $2, $3, $4)',
       [
@@ -20,7 +20,7 @@ export default class PassengerRepositoryDatabase
   }
 
   async get(passengerId: string): Promise<Passenger> {
-    const connection = pgp()('postgres://postgres:123456@localhost:5432/app')
+    const connection = pgp()('postgres://postgres:postgres@localhost:5432/miniuber')
     const [passengerData] = await connection.query(
       'select * from miniuber.passenger where passenger_id = $1',
       [passengerId],

@@ -1,4 +1,4 @@
-import CarPlate from '@/domain/carPlate'
+import CarPlate from '../../src/domain/carPlate'
 import { expect, test } from 'vitest'
 
 test('Deve testar uma placa válida', function () {

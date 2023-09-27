@@ -1,4 +1,4 @@
-import Driver from '@/domain/driver'
+import Driver from 'src/domain/driver'
 import DriverRepository from '../repository/driverRepository'
 
 type Input = {
