@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import Cpf from '../src/cpf'
+import Cpf from '../../src/domain/cpf'
 
 test.each(['83432616074', '74587887803', '87175659520'])(
   'Deve testar os cpfs válidos',
