@@ -1,13 +1,13 @@
-import pgp from 'pg-promise'
 import DriverRepository from 'src/application/repository/driverRepository'
 import Driver from 'src/domain/driver'
+import DatabaseConnection from '../database/databaseConnection'
 
+// Interface Adapters
 export default class DriverRepositoryDatabase implements DriverRepository {
+  constructor(readonly connection: DatabaseConnection) {}
+
   async save(driver: Driver) {
-    const connection = pgp()(
-      'postgres://postgres:postgres@localhost:5432/miniuber',
-    )
-    await connection.query(
+    await this.connection.query(
       'insert into miniuber.driver (driver_id, name, email, document, car_plate) values ($1, $2, $3, $4, $5)',
       [
         driver.driverId,
@@ -17,18 +17,13 @@ export default class DriverRepositoryDatabase implements DriverRepository {
         driver.carPlate.value,
       ],
     )
-    await connection.$pool.end()
   }
 
   async get(driverId: string) {
-    const connection = pgp()(
-      'postgres://postgres:postgres@localhost:5432/miniuber',
-    )
-    const [driverData] = await connection.query(
+    const [driverData] = await this.connection.query(
       'select * from miniuber.driver where driver_id = $1',
       [driverId],
     )
-    await connection.$pool.end()
     return new Driver(
       driverData.driver_id,
       driverData.name,

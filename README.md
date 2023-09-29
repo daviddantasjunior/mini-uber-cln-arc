@@ -20,4 +20,4 @@ Mini Uber is a **Node.js application** that adheres to software development prin
 
 # Coverage
 
-![Coverage](resources/coverage.png)
+![Coverage](resources/coverage2.png)
